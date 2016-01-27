@@ -215,8 +215,8 @@ function($ionicModal, $rootScope, $q) {
       var context = canvas.getContext('2d');
 
       // Canvas size is original proportions but scaled down.
-      canvas.width = this.options.width / this.scale;
-      canvas.height = this.options.height / this.scale;
+      canvas.width = 640;//this.options.width / this.scale;
+      canvas.height = 640;//this.options.height / this.scale;
 
       // The full proportions
       var currWidth = this.imgWidth * this.scale;
@@ -230,7 +230,7 @@ function($ionicModal, $rootScope, $q) {
       var sourceX = (this.posX - correctX) / this.scale;
       var sourceY = (this.posY - correctY) / this.scale;
 
-      context.drawImage(this.imgFull, sourceX, sourceY);
+      context.drawImage(this.imgFull, -sourceX, -sourceY, this.options.width/this.scale, this.options.height/this.scale, 0, 0, 640, 640);
 
       this.options.modal.remove();
       this.promise.resolve(canvas);
